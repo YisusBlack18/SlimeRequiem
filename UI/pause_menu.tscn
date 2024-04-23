@@ -1,0 +1,52 @@
+[gd_scene load_steps=3 format=3 uid="uid://dqsot5x3d3t5a"]
+
+[ext_resource type="PackedScene" uid="uid://b7c7gsdx2rkjm" path="res://Utility/basic_button.tscn" id="1_dupah"]
+[ext_resource type="Script" path="res://UI/pause_menu.gd" id="1_r2744"]
+
+[node name="PauseMenu" type="Control"]
+process_mode = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_r2744")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.5
+offset_top = -70.0
+offset_right = 64.5
+offset_bottom = 70.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "= Pause ="
+horizontal_alignment = 1
+
+[node name="btn_resume" parent="Panel/VBoxContainer" instance=ExtResource("1_dupah")]
+layout_mode = 2
+text = "Resume"
+
+[node name="btn_exit" parent="Panel/VBoxContainer" instance=ExtResource("1_dupah")]
+layout_mode = 2
+text = "Exit"
+
+[connection signal="pressed" from="Panel/VBoxContainer/btn_resume" to="." method="_on_btn_resume_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/btn_exit" to="." method="_on_btn_exit_pressed"]

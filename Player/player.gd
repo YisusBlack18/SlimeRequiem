@@ -1,6 +1,5 @@
 extends CharacterBody2D
 
-
 var movement_speed = 40.0
 var hp = 80
 var maxhp = 80
@@ -10,6 +9,9 @@ var time = 0
 var experience = 0
 var experience_level = 1
 var collected_experience = 0
+
+var slime = preload("res://Textures/Player/player_sprite.png")
+var blood_slime = preload("res://Textures/Player/player_sprite2.png")
 
 #Attacks
 var iceSpear = preload("res://Player/Attack/ice_spear.tscn")
@@ -74,6 +76,8 @@ var enemy_close = []
 @onready var sndVictory = get_node("%snd_victory")
 @onready var sndLose = get_node("%snd_lose")
 
+@export var blood_screen: Blood_screen
+
 #Signal
 signal playerdeath
 
@@ -82,6 +86,7 @@ func _ready():
 	attack()
 	set_expbar(experience, calculate_experiencecap())
 	_on_hurt_box_hurt(0,0,0)
+	blood_screen.connect("toggle_blood_mode",_on_blood_screen_toggle_blood_mode)
 
 func _physics_process(delta):
 	movement()
@@ -91,9 +96,9 @@ func movement():
 	var y_mov = Input.get_action_strength("down") - Input.get_action_strength("up")
 	var mov = Vector2(x_mov,y_mov)
 	if mov.x > 0:
-		sprite.flip_h = true
-	elif mov.x < 0:
 		sprite.flip_h = false
+	elif mov.x < 0:
+		sprite.flip_h = true
 
 	if mov != Vector2.ZERO:
 		last_movement = mov
@@ -374,3 +379,9 @@ func death():
 func _on_btn_menu_click_end():
 	get_tree().paused = false
 	var _level = get_tree().change_scene_to_file("res://TitleScreen/menu.tscn")
+
+func _on_blood_screen_toggle_blood_mode(is_bloodmode: bool):
+	if is_bloodmode:
+		sprite.texture = blood_slime
+	else:
+		sprite.texture = slime

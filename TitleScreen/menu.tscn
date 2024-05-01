@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://dcyka5e06knff"]
+[gd_scene load_steps=7 format=3 uid="uid://dcyka5e06knff"]
 
 [ext_resource type="Script" path="res://TitleScreen/menu.gd" id="1_oi0p3"]
 [ext_resource type="FontFile" uid="uid://cb4e8g30xxp5u" path="res://Font/tenderness.otf" id="1_xdjxl"]
+[ext_resource type="Texture2D" uid="uid://bc30bi6qn25ae" path="res://Textures/splashart.png" id="2_i2yvq"]
 [ext_resource type="PackedScene" uid="uid://b7c7gsdx2rkjm" path="res://Utility/basic_button.tscn" id="3_kwsdd"]
 [ext_resource type="AudioStream" uid="uid://drlfn6iwojlmg" path="res://Audio/Music/menuTheme.mp3" id="4_asd8p"]
 [ext_resource type="Script" path="res://Audio/Music/snd_Menu.gd" id="5_1a4lf"]
@@ -15,16 +16,22 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_oi0p3")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-layout_mode = 0
-offset_right = 673.0
-offset_bottom = 382.0
-color = Color(0.572549, 0.207843, 0.168627, 1)
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_i2yvq")
+expand_mode = 1
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
 offset_right = 640.0
 offset_bottom = 100.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_xdjxl")
 theme_override_font_sizes/font_size = 72
 text = "Slime Requiem"
@@ -34,17 +41,19 @@ vertical_alignment = 1
 [node name="btn_play" parent="." instance=ExtResource("3_kwsdd")]
 layout_mode = 0
 offset_left = 280.0
-offset_top = 250.0
+offset_top = 200.0
 offset_right = 360.0
-offset_bottom = 280.0
+offset_bottom = 230.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
 text = "Play"
 
 [node name="btn_exit" parent="." instance=ExtResource("3_kwsdd")]
 layout_mode = 0
 offset_left = 280.0
-offset_top = 290.0
+offset_top = 240.0
 offset_right = 360.0
-offset_bottom = 320.0
+offset_bottom = 270.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
 text = "Exit"
 
 [node name="snd_Menu" type="AudioStreamPlayer" parent="."]

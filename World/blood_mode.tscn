@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://d023o1khr6ryw"]
+
+[ext_resource type="Script" path="res://World/BloodMode.gd" id="1_g5imn"]
+
+[node name="BloodMode" type="ColorRect"]
+visible = false
+custom_minimum_size = Vector2(1920, 1080)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0, 0, 0.313726)
+script = ExtResource("1_g5imn")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

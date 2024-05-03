@@ -383,5 +383,17 @@ func _on_btn_menu_click_end():
 func _on_blood_screen_toggle_blood_mode(is_bloodmode: bool):
 	if is_bloodmode:
 		sprite.texture = blood_slime
+		maxhp = maxhp * 1.2
+		hp = hp * 1.2
+		movement_speed = movement_speed * 1.2
+		armor = armor * 1.2
+		spell_cooldown = spell_cooldown * 1.2
+		spell_size = spell_size * 1.2
 	else:
 		sprite.texture = slime
+		maxhp = maxhp / 1.2
+		hp = hp / 1.2
+		movement_speed = movement_speed / 1.2
+		armor = armor / 1.2
+		spell_cooldown = spell_cooldown / 1.2
+		spell_size = spell_size / 1.2

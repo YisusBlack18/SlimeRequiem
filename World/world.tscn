@@ -111,5 +111,9 @@ script = ExtResource("11_ovtx6")
 
 [node name="BloodMode" parent="." instance=ExtResource("12_1e6av")]
 top_level = true
+offset_left = -2000.0
+offset_top = -2000.0
+offset_right = 1360.0
+offset_bottom = 1640.0
 
 [connection signal="playerdeath" from="Player" to="snd_Music" method="_on_player_playerdeath"]

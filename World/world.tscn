@@ -117,3 +117,4 @@ offset_right = 1360.0
 offset_bottom = 1640.0
 
 [connection signal="playerdeath" from="Player" to="snd_Music" method="_on_player_playerdeath"]
+[connection signal="finished" from="snd_Music" to="snd_Music" method="_on_finished"]
